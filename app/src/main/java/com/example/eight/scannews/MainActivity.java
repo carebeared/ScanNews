@@ -68,8 +68,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -81,18 +83,28 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch (id) {
+            case R.id.nav_camera:
+                // Handle the camera action
 
-        } else if (id == R.id.nav_slideshow) {
+                break;
+            case R.id.nav_gallery:
 
-        } else if (id == R.id.nav_manage) {
+                break;
+            case R.id.nav_slideshow:
 
-        } else if (id == R.id.nav_share) {
+                break;
+            case R.id.nav_manage:
 
-        } else if (id == R.id.nav_send) {
+                break;
+            case R.id.nav_share:
 
+                break;
+            case R.id.nav_send:
+
+                break;
+            default:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
