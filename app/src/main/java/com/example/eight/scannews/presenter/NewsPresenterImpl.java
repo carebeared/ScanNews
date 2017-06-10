@@ -22,7 +22,15 @@ public class NewsPresenterImpl implements Contract.NewsPresenter, Contract.OnLoa
 
     @Override
     public void loadNews(int type, int page) {
+        String url = initUrl(type, page);
+        if (page == 0) {
+            newsView.showProgress();
+        }
+        newsModel.loadNews(url, type, this);
+    }
 
+    private String initUrl(int type, int pageIndex) {
+        return "";
     }
 
     @Override
