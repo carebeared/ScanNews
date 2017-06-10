@@ -38,7 +38,7 @@ public class NewsListFragment extends Fragment
     private Contract.NewsPresenter newsPresenter;
     private NewsAdapter newsAdapter;
 
-    private List<NewsBean> data;
+    private List<NewsBean.NewslistBean> data;
     private int type = 0;
     private int pageIndex = 0;
     private int pageSize = 20;
@@ -89,7 +89,7 @@ public class NewsListFragment extends Fragment
             if (data.size() <= 0) {
                 return;
             }
-            NewsBean news = newsAdapter.getItem(position);
+            NewsBean.NewslistBean news = newsAdapter.getItem(position);
             // 跳转
             Intent intent = new Intent(getActivity(), NewsDatailActivity.class);
             //intent.putExtra("news", news);
@@ -125,7 +125,7 @@ public class NewsListFragment extends Fragment
     }
 
     @Override
-    public void addNews(List<NewsBean> newsBeanList) {
+    public void addNews(List<NewsBean.NewslistBean> newsBeanList) {
         newsAdapter.setShowFooter(true);
         if (data == null) {
             data = new ArrayList<>();

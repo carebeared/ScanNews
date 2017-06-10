@@ -11,13 +11,13 @@ import java.util.List;
 
 public interface Contract {
     interface NewsModel {
-        void loadNews(String url, int type, OnLoadNewsListListener listener);
+        void loadNews(String url, String key, int num, int page, int type, OnLoadNewsListListener listener);
         void loadNewsDetail(String id, OnLoadNewsDetailListener listener);
     }
 
     interface NewsView {
         void showProgress();
-        void addNews(List<NewsBean> newsBeanList);
+        void addNews(List<NewsBean.NewslistBean> newsBeanList);
         void hideProgress();
         void showLoadingFail();
     }
@@ -27,7 +27,7 @@ public interface Contract {
     }
 
     interface OnLoadNewsListListener {
-        void onSuccess(List<NewsBean> list);
+        void onSuccess(List<NewsBean.NewslistBean> list);
         void onFailure(String msg, Exception e);
     }
 

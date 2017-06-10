@@ -21,7 +21,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
 
-    private List<NewsBean> data;
+    private List<NewsBean.NewslistBean> data;
     private boolean isShowFooter = true;
     private Context context;
 
@@ -31,12 +31,12 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = context;
     }
 
-    public void setData(List<NewsBean> data) {
+    public void setData(List<NewsBean.NewslistBean> data) {
         this.data = data;
         this.notifyDataSetChanged();
     }
 
-    public NewsBean getItem(int position) {
+    public NewsBean.NewslistBean getItem(int position) {
         return data == null ? null : data.get(position);
     }
 
@@ -78,10 +78,14 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder) {
-            NewsBean newsBean = data.get(position);
-            if (newsBean == null) {
+            NewsBean.NewslistBean newslistBean = data.get(position);
+            if (newslistBean == null) {
                 return;
             }
+            ((ItemViewHolder) holder).newsContent.setText(newslistBean.getTitle());
+            ((ItemViewHolder) holder).newsPublic.setText(newslistBean.getDescription());
+            ((ItemViewHolder) holder).newsTime.setText(newslistBean.getCtime());
+            HttpUtils.showPicture(context, ((ItemViewHolder) holder).newsPicture, newslistBean.getPicUrl());
 
         }
     }
